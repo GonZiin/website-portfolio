@@ -107,7 +107,6 @@ function Projects() {
           {projects.length} projects
         </span>
       </div>
-
     </section>
   )
 }
