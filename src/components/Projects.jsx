@@ -48,7 +48,6 @@ function Projects() {
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(1)
 
-  const visible = 3
   const total = projects.length
 
   const prev = () => {
@@ -61,15 +60,15 @@ function Projects() {
     setCurrent((c) => (c + 1) % total)
   }
 
-  const getVisible = () => {
-    return [0, 1, 2].map((i) => ({
+  const getVisible = (count) => {
+    return Array.from({ length: count }).map((_, i) => ({
       project: projects[(current + i) % total],
       index: (current + i) % total
     }))
   }
 
   return (
-    <section id="projects" className="bg-[#282828] py-20">
+    <section id="projects" className="bg-[#282828] py-20 overflow-hidden">
 
       {/* cabeçalho */}
       <div className="max-w-6xl mx-auto px-8 mb-12">
@@ -121,22 +120,63 @@ function Projects() {
         />
       </div>
 
-      {/* carrossel */}
-      <div className="max-w-6xl mx-auto px-8 overflow-hidden">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: direction * 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction * -100 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className="grid grid-cols-3 gap-6"
-          >
-            {getVisible().map(({ project, index }) => (
-              <ProjectCard key={project.name} index={index} {...project} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
+      {/* carrossel — mobile: 1 card, tablet: 2, desktop: 3 */}
+      <div className="max-w-6xl mx-auto px-8">
+
+        {/* mobile: 1 card */}
+        <div className="block md:hidden overflow-hidden">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: direction * 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -100 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="grid grid-cols-1 gap-6"
+            >
+              {getVisible(1).map(({ project, index }) => (
+                <ProjectCard key={project.name} index={index} {...project} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* tablet: 2 cards */}
+        <div className="hidden md:block lg:hidden overflow-hidden">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: direction * 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -100 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {getVisible(2).map(({ project, index }) => (
+                <ProjectCard key={project.name} index={index} {...project} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* desktop: 3 cards */}
+        <div className="hidden lg:block overflow-hidden">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: direction * 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -100 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="grid grid-cols-3 gap-6"
+            >
+              {getVisible(3).map(({ project, index }) => (
+                <ProjectCard key={project.name} index={index} {...project} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
       </div>
 
       {/* indicadores */}
