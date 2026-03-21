@@ -28,9 +28,15 @@ function ProjectCard({ name, description, link, tech, index, image }) {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          /* placeholder se não houver imagem */
-          <div className="w-full h-full bg-[#32302f] flex items-center justify-center">
-            <span className="text-[#504945] font-mono text-5xl font-bold">
+          <div className="w-full h-full bg-[#1d2021] flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 flex flex-wrap content-start p-2 opacity-20 select-none">
+              {Array.from({ length: 80 }).map((_, i) => (
+                <span key={i} className="text-[#fe8019] font-mono text-xs w-6 text-center">
+                  {['0', '1', '{', '}', '<', '>', '//', ';'][Math.floor(Math.random() * 8)]}
+                </span>
+              ))}
+            </div>
+            <span className="relative text-[#504945] font-mono text-5xl font-bold z-10">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
@@ -55,17 +61,21 @@ function ProjectCard({ name, description, link, tech, index, image }) {
           ))}
         </div>
 
-        {/* links */}
+        {/* link */}
         <div className="flex gap-4">
-          <motion.a
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ x: 4 }}
-            className="text-[#fe8019] font-mono text-sm hover:text-[#fabd2f] transition-colors flex items-center gap-1"
-          >
-            {'>'} github
-          </motion.a>
+          {link.startsWith('http') ? (
+            <motion.a
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ x: 4 }}
+              className="text-[#fe8019] font-mono text-sm hover:text-[#fabd2f] transition-colors"
+            >
+              {'>'} github
+            </motion.a>
+          ) : (
+            <span className="text-[#504945] font-mono text-sm">{'>'} not open source</span>
+          )}
         </div>
       </div>
     </motion.div>

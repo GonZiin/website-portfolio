@@ -1,28 +1,51 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from './ProjectCard'
+import railwayImg from '../assets/railway.png'
+import verletImg from '../assets/verlet.png'
 
 const projects = [
   {
-    name: "Shell em C",
-    description: "Uma shell Unix básica com suporte a pipes e redirecionamento.",
-    link: "https://github.com/GonZiin/shell",
-    tech: ["C", "Linux", "Unix"],
-    image: null // coloca o caminho da imagem aqui depois
+    name: "Verlet Simulation",
+    description: "Physics simulation using the Verlet integration method, built with C++ and SDL2. Real-time particle interactions and constraints.",
+    link: "https://github.com/GonZiin/PhysicsSimulator.git",
+    tech: ["C++", "SDL2", "Physics"],
+    image: verletImg
   },
   {
-    name: "Gestor de tarefas",
-    description: "Aplicação de linha de comandos para gerir tarefas em Java.",
-    link: "https://github.com/GonZiin/task-manager",
-    tech: ["Java", "CLI"],
-    image: null
+    name: "Agentic AI Research",
+    description: "Research project on agentic AI systems. Published paper at WORLD CIST 25.",
+    link: "Not Open Source",
+    tech: ["Python", "AI", "Research"],
+    {image ? (
+  <img
+    src={image}
+    alt={name}
+    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+  />
+) : (
+  <div className="w-full h-full bg-[#1d2021] flex items-center justify-center relative overflow-hidden">
+    {/* grid de caracteres aleatórios estilo matrix */}
+    <div className="absolute inset-0 flex flex-wrap content-start p-2 opacity-20 select-none">
+      {Array.from({ length: 80 }).map((_, i) => (
+        <span key={i} className="text-[#fe8019] font-mono text-xs w-6 text-center">
+          {['0', '1', '{', '}', '<', '>', '//', ';'][Math.floor(Math.random() * 8)]}
+        </span>
+      ))}
+    </div>
+    {/* número por cima */}
+    <span className="relative text-[#504945] font-mono text-5xl font-bold z-10">
+      {String(index + 1).padStart(2, '0')}
+    </span>
+  </div>
+)}
   },
   {
-    name: "Projeto 3",
-    description: "Descrição do projeto.",
-    link: "https://github.com/GonZiin/",
-    tech: ["C", "Java"],
-    image: null
+    name: "Railway Management",
+    description: "Railway management system built with Java and JavaFX. Full GUI with route planning and scheduling.",
+    link: "Not Open Source",
+    tech: ["Java", "JavaFX"],
+    image: railwayImg
   },
 ]
 
