@@ -17,28 +17,7 @@ const projects = [
     description: "Research project on agentic AI systems. Published paper at WORLD CIST 25.",
     link: "Not Open Source",
     tech: ["Python", "AI", "Research"],
-    {image ? (
-  <img
-    src={image}
-    alt={name}
-    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-  />
-) : (
-  <div className="w-full h-full bg-[#1d2021] flex items-center justify-center relative overflow-hidden">
-    {/* grid de caracteres aleatórios estilo matrix */}
-    <div className="absolute inset-0 flex flex-wrap content-start p-2 opacity-20 select-none">
-      {Array.from({ length: 80 }).map((_, i) => (
-        <span key={i} className="text-[#fe8019] font-mono text-xs w-6 text-center">
-          {['0', '1', '{', '}', '<', '>', '//', ';'][Math.floor(Math.random() * 8)]}
-        </span>
-      ))}
-    </div>
-    {/* número por cima */}
-    <span className="relative text-[#504945] font-mono text-5xl font-bold z-10">
-      {String(index + 1).padStart(2, '0')}
-    </span>
-  </div>
-)}
+    image: null
   },
   {
     name: "Railway Management",
