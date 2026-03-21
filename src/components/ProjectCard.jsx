@@ -7,19 +7,19 @@ function ProjectCard({ name, description, link, tech, index, image }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="flex-shrink-0 w-96 bg-[#1d2021] rounded-lg overflow-hidden border border-[#504945] hover:border-[#fe8019] transition-all duration-300 group"
+      className="w-full bg-[#1d2021] rounded-lg overflow-hidden border border-[#504945] hover:border-[#fe8019] transition-all duration-300 group"
     >
       {/* barra de terminal */}
       <div className="flex items-center gap-2 px-4 py-3 bg-[#32302f] border-b border-[#504945]">
-        <span className="w-3 h-3 rounded-full bg-[#cc241d]" />
-        <span className="w-3 h-3 rounded-full bg-[#fabd2f]" />
-        <span className="w-3 h-3 rounded-full bg-[#b8bb26]" />
-        <span className="text-[#a89984] font-mono text-xs ml-2">
+        <span className="w-3 h-3 rounded-full bg-[#cc241d] flex-shrink-0" />
+        <span className="w-3 h-3 rounded-full bg-[#fabd2f] flex-shrink-0" />
+        <span className="w-3 h-3 rounded-full bg-[#b8bb26] flex-shrink-0" />
+        <span className="text-[#a89984] font-mono text-xs ml-2 truncate">
           ~/projects/{name.toLowerCase().replace(/ /g, '-')}
         </span>
       </div>
 
-      {/* imagem com overlay */}
+      {/* imagem */}
       <div className="relative h-48 overflow-hidden">
         {image ? (
           <img
@@ -41,7 +41,6 @@ function ProjectCard({ name, description, link, tech, index, image }) {
             </span>
           </div>
         )}
-        {/* overlay laranja no hover */}
         <div className="absolute inset-0 bg-[#fe8019] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
       </div>
 
@@ -52,7 +51,6 @@ function ProjectCard({ name, description, link, tech, index, image }) {
         </h3>
         <p className="text-[#a89984] text-sm leading-relaxed mb-4">{description}</p>
 
-        {/* tech tags */}
         <div className="flex gap-2 flex-wrap mb-6">
           {tech.map((t) => (
             <span key={t} className="text-xs bg-[#282828] text-[#fe8019] font-mono px-2 py-1 rounded border border-[#504945]">
@@ -61,22 +59,19 @@ function ProjectCard({ name, description, link, tech, index, image }) {
           ))}
         </div>
 
-        {/* link */}
-        <div className="flex gap-4">
-          {link.startsWith('http') ? (
-            <motion.a
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ x: 4 }}
-              className="text-[#fe8019] font-mono text-sm hover:text-[#fabd2f] transition-colors"
-            >
-              {'>'} github
-            </motion.a>
-          ) : (
-            <span className="text-[#504945] font-mono text-sm">{'>'} not open source</span>
-          )}
-        </div>
+        {link.startsWith('http') ? (
+          <motion.a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ x: 4 }}
+            className="text-[#fe8019] font-mono text-sm hover:text-[#fabd2f] transition-colors"
+          >
+            {'>'} github
+          </motion.a>
+        ) : (
+          <span className="text-[#504945] font-mono text-sm">{'>'} not open source</span>
+        )}
       </div>
     </motion.div>
   )
