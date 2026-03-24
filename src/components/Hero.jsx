@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import useTypewriter from '../hooks/useTypewriter'
 
 const roles = [
@@ -27,26 +27,26 @@ function Hero() {
 
       {/* conteúdo */}
       <div className="relative z-10">
-        <motion.p
+        <Motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="text-[#fe8019] font-mono mb-4 tracking-widest text-sm uppercase"
         >
           {'<'} hello world {'>'}
-        </motion.p>
+        </Motion.p>
 
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-6xl font-bold text-[#ebdbb2] mb-4"
         >
           Gonçalo Gomes
-        </motion.h1>
+        </Motion.h1>
 
         {/* typewriter */}
-        <motion.p
+        <Motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -54,15 +54,15 @@ function Hero() {
         >
           <span className="text-[#fe8019]">{text}</span>
           <span className="animate-pulse">_</span>
-        </motion.p>
+        </Motion.p>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
           className="flex gap-4 justify-center"
         >
-          <motion.a
+          <Motion.a
             href="#projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -70,8 +70,8 @@ function Hero() {
             className="px-6 py-3 bg-[#fe8019] text-[#282828] font-bold font-mono rounded hover:bg-[#fabd2f] transition-colors"
           >
             My Projects
-          </motion.a>
-          <motion.a
+          </Motion.a>
+          <Motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -79,8 +79,8 @@ function Hero() {
             className="px-6 py-3 border-2 border-[#fe8019] text-[#fe8019] font-bold font-mono rounded hover:bg-[#fe8019] hover:text-[#282828] transition-colors"
           >
             Contact
-          </motion.a>
-        </motion.div>
+          </Motion.a>
+        </Motion.div>
       </div>
 
     </section>

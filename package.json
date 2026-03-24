@@ -13,8 +13,13 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "^12.38.0",
+    "jszip": "^3.10.1",
+    "@supabase/supabase-js": "^2.57.4",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

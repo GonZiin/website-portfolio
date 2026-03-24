@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion as Motion, AnimatePresence } from 'framer-motion'
 import ProjectCard from './ProjectCard'
 import railwayImg from '../assets/railway.png'
 import verletImg from '../assets/verlet.png'
@@ -74,15 +74,15 @@ function Projects() {
       <div className="max-w-6xl mx-auto px-8 mb-12">
         <div className="flex items-end justify-between">
           <div>
-            <motion.p
+            <Motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="text-[#fe8019] font-mono text-sm mb-2 tracking-widest"
             >
               // selected works
-            </motion.p>
-            <motion.h2
+            </Motion.p>
+            <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -90,28 +90,28 @@ function Projects() {
               className="text-[#ebdbb2] text-5xl font-bold font-mono"
             >
               Projects<span className="text-[#fe8019]">.</span>
-            </motion.h2>
+            </Motion.h2>
           </div>
           <div className="flex gap-3">
-            <motion.button
+            <Motion.button
               onClick={prev}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-4 py-2 border border-[#504945] text-[#a89984] font-mono hover:border-[#fe8019] hover:text-[#fe8019] transition-colors rounded"
             >
               {'<'} prev
-            </motion.button>
-            <motion.button
+            </Motion.button>
+            <Motion.button
               onClick={next}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-4 py-2 border border-[#504945] text-[#a89984] font-mono hover:border-[#fe8019] hover:text-[#fe8019] transition-colors rounded"
             >
               next {'>'}
-            </motion.button>
+            </Motion.button>
           </div>
         </div>
-        <motion.div
+        <Motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
@@ -126,7 +126,7 @@ function Projects() {
         {/* mobile: 1 card */}
         <div className="block md:hidden overflow-hidden">
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <Motion.div
               key={current}
               initial={{ opacity: 0, x: direction * 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -137,14 +137,14 @@ function Projects() {
               {getVisible(1).map(({ project, index }) => (
                 <ProjectCard key={project.name} index={index} {...project} />
               ))}
-            </motion.div>
+            </Motion.div>
           </AnimatePresence>
         </div>
 
         {/* tablet: 2 cards */}
         <div className="hidden md:block lg:hidden overflow-hidden">
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <Motion.div
               key={current}
               initial={{ opacity: 0, x: direction * 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -155,14 +155,14 @@ function Projects() {
               {getVisible(2).map(({ project, index }) => (
                 <ProjectCard key={project.name} index={index} {...project} />
               ))}
-            </motion.div>
+            </Motion.div>
           </AnimatePresence>
         </div>
 
         {/* desktop: 3 cards */}
         <div className="hidden lg:block overflow-hidden">
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <Motion.div
               key={current}
               initial={{ opacity: 0, x: direction * 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -173,7 +173,7 @@ function Projects() {
               {getVisible(3).map(({ project, index }) => (
                 <ProjectCard key={project.name} index={index} {...project} />
               ))}
-            </motion.div>
+            </Motion.div>
           </AnimatePresence>
         </div>
 

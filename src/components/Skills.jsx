@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 
 const skills = [
   {
@@ -44,15 +44,15 @@ function Skills() {
         {/* cabeçalho */}
         <div className="flex items-end gap-6 mb-16">
           <div>
-            <motion.p
+            <Motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="text-[#fe8019] font-mono text-sm mb-2 tracking-widest"
             >
               // what i know
-            </motion.p>
-            <motion.h2
+            </Motion.p>
+            <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -60,9 +60,9 @@ function Skills() {
               className="text-[#ebdbb2] text-5xl font-bold font-mono"
             >
               Skills<span className="text-[#fe8019]">.</span>
-            </motion.h2>
+            </Motion.h2>
           </div>
-          <motion.div
+          <Motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -75,7 +75,7 @@ function Skills() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
           {/* card destaque — Languages */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -95,19 +95,19 @@ function Skills() {
               <h3 className="text-[#ebdbb2] font-mono text-2xl font-bold mb-6">{featured.category}</h3>
 
               <div className="flex flex-col gap-4 flex-1">
-                {featured.items.map((item, i) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.15, duration: 0.4 }}
-                    className="flex items-center gap-3 p-3 bg-[#1d2021] rounded border border-[#504945] group-hover:border-[#fe8019]/30 transition-colors"
-                  >
-                    <span className="text-[#fe8019] font-mono text-lg font-bold">&gt;</span>
-                    <span className="text-[#ebdbb2] font-mono text-lg">{item}</span>
-                  </motion.div>
-                ))}
+                  {featured.items.map((item, i) => (
+                  <Motion.div
+                     key={item}
+                     initial={{ opacity: 0, x: -20 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: i * 0.15, duration: 0.4 }}
+                     className="flex items-center gap-3 p-3 bg-[#1d2021] rounded border border-[#504945] group-hover:border-[#fe8019]/30 transition-colors"
+                   >
+                     <span className="text-[#fe8019] font-mono text-lg font-bold">&gt;</span>
+                     <span className="text-[#ebdbb2] font-mono text-lg">{item}</span>
+                  </Motion.div>
+                 ))}
               </div>
 
               {/* decoração em baixo */}
@@ -115,11 +115,11 @@ function Skills() {
                 <span className="text-[#504945] font-mono text-xs">5+ years experience</span>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* cards restantes */}
           {rest.map((skill, index) => (
-            <motion.div
+            <Motion.div
               key={skill.category}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ function Skills() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </Motion.div>
           ))}
 
         </div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
 import { useState } from 'react'
 
 const links = [
@@ -40,35 +40,35 @@ function Contact() {
       <div className="max-w-6xl mx-auto px-8">
 
         {/* header */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-[#fe8019] font-mono text-sm mb-2 tracking-widest"
-        >
-          // get in touch
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-[#ebdbb2] text-5xl font-bold font-mono mb-2"
-        >
-          Contact<span className="text-[#fe8019]">.</span>
-        </motion.h2>
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="h-px bg-gradient-to-r from-[#504945] to-transparent origin-left mb-16"
-        />
+      <Motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-[#fe8019] font-mono text-sm mb-2 tracking-widest"
+      >
+        // get in touch
+      </Motion.p>
+      <Motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-[#ebdbb2] text-5xl font-bold font-mono mb-2"
+      >
+        Contact<span className="text-[#fe8019]">.</span>
+      </Motion.h2>
+      <Motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="h-px bg-gradient-to-r from-[#504945] to-transparent origin-left mb-16"
+      />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
           {/* left side — links */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -81,7 +81,7 @@ function Contact() {
             </p>
 
             {links.map((link, index) => (
-              <motion.a
+              <Motion.a
                 key={link.label}
                 href={link.href}
                 target="_blank"
@@ -106,12 +106,12 @@ function Contact() {
                 <span className="ml-auto text-[#504945] group-hover:text-[#fe8019] font-mono transition-colors">
                   {'>'}
                 </span>
-              </motion.a>
+              </Motion.a>
             ))}
-          </motion.div>
+          </Motion.div>
 
           {/* right side — form */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -167,22 +167,22 @@ function Contact() {
                     placeholder="how can I help you?"
                   />
                 </div>
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-[#fe8019] text-[#282828] font-bold font-mono rounded hover:bg-[#fabd2f] transition-colors"
-                >
-                  {'>'} send message
-                </motion.button>
-              </form>
-            )}
-          </motion.div>
+              <Motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-3 bg-[#fe8019] text-[#282828] font-bold font-mono rounded hover:bg-[#fabd2f] transition-colors"
+              >
+                {'>'} send message
+              </Motion.button>
+            </form>
+          )}
+          </Motion.div>
 
         </div>
 
         {/* footer */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -191,7 +191,7 @@ function Contact() {
         >
           <span className="text-[#504945] font-mono text-xs">© 2025 Gonçalo Gomes</span>
           <span className="text-[#504945] font-mono text-xs">built with React + Tailwind</span>
-        </motion.div>
+        </Motion.div>
 
       </div>
     </section>

@@ -1,8 +1,20 @@
-import { motion } from 'framer-motion'
+import { motion as Motion } from 'framer-motion'
+import { useMemo } from 'react'
+
+const noiseChars = ['0', '1', '{', '}', '<', '>', '//', ';']
+
+function pickChar(seedA, seedB) {
+  const x = (seedA * 1103515245 + seedB * 12345) >>> 0
+  return noiseChars[x % noiseChars.length]
+}
 
 function ProjectCard({ name, description, link, tech, index, image }) {
+  const noise = useMemo(() => {
+    return Array.from({ length: 80 }).map((_, i) => pickChar(index + 1, i + 1))
+  }, [index])
+
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -30,9 +42,9 @@ function ProjectCard({ name, description, link, tech, index, image }) {
         ) : (
           <div className="w-full h-full bg-[#1d2021] flex items-center justify-center relative overflow-hidden">
             <div className="absolute inset-0 flex flex-wrap content-start p-2 opacity-20 select-none">
-              {Array.from({ length: 80 }).map((_, i) => (
+              {noise.map((ch, i) => (
                 <span key={i} className="text-[#fe8019] font-mono text-xs w-6 text-center">
-                  {['0', '1', '{', '}', '<', '>', '//', ';'][Math.floor(Math.random() * 8)]}
+                  {ch}
                 </span>
               ))}
             </div>
@@ -60,7 +72,7 @@ function ProjectCard({ name, description, link, tech, index, image }) {
         </div>
 
         {link.startsWith('http') ? (
-          <motion.a
+          <Motion.a
             href={link}
             target="_blank"
             rel="noreferrer"
@@ -68,12 +80,12 @@ function ProjectCard({ name, description, link, tech, index, image }) {
             className="text-[#fe8019] font-mono text-sm hover:text-[#fabd2f] transition-colors"
           >
             {'>'} github
-          </motion.a>
+          </Motion.a>
         ) : (
           <span className="text-[#504945] font-mono text-sm">{'>'} not open source</span>
         )}
       </div>
-    </motion.div>
+    </Motion.div>
   )
 }
 

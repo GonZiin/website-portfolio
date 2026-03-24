@@ -1,0 +1,4 @@
+Este e um anexo de exemplo.
+
+Podes substituir este ficheiro por PDFs, imagens, ZIPs, etc.
+Coloca-os em public/blog/<slug>/ e referencia no frontmatter do post.
